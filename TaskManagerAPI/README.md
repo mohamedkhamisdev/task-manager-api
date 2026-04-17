@@ -13,7 +13,7 @@ A simple and straightforward ASP.NET Core Web API for managing tasks. This proje
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/task-manager-api.git
+git clone https://github.com/mohamedkhamisdev/task-manager-api.git
 cd task-manager-api
 cd TaskManagerAPI
 ```
@@ -30,11 +30,11 @@ dotnet build
 dotnet run
 ```
 
-The API will start at `https://localhost:5001` by default. You can test the endpoints using tools like [Postman](https://www.postman.com/) or [curl](https://curl.se/).
+The API will start at `http://localhost:5000` by default. You can test the endpoints using tools like [Postman](https://www.postman.com/) or [curl](https://curl.se/).
 
 ## API Endpoints
 
-All endpoints use the base URL: `https://localhost:5001/api/tasks`
+All endpoints use the base URL: `http://localhost:5000/api/tasks`
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -51,7 +51,7 @@ All endpoints use the base URL: `https://localhost:5001/api/tasks`
 **Request:**
 ```http
 GET /api/tasks HTTP/1.1
-Host: localhost:5001
+Host: localhost:5000
 ```
 
 **Response (200 OK):**
@@ -79,7 +79,7 @@ Host: localhost:5001
 **Request:**
 ```http
 GET /api/tasks/1 HTTP/1.1
-Host: localhost:5001
+Host: localhost:5000
 ```
 
 **Response (200 OK):**
@@ -103,7 +103,7 @@ null
 **Request:**
 ```http
 POST /api/tasks HTTP/1.1
-Host: localhost:5001
+Host: localhost:5000
 Content-Type: application/json
 
 {
@@ -133,7 +133,7 @@ Content-Type: application/json
 **Request:**
 ```http
 PUT /api/tasks/1 HTTP/1.1
-Host: localhost:5001
+Host: localhost:5000
 Content-Type: application/json
 
 {
@@ -158,7 +158,7 @@ Content-Type: application/json
 **Request:**
 ```http
 DELETE /api/tasks/1 HTTP/1.1
-Host: localhost:5001
+Host: localhost:5000
 ```
 
 **Response (204 No Content):**
@@ -211,9 +211,9 @@ TaskManagerAPI/
 ## Troubleshooting
 
 **Port Already in Use:**
-If port 5001 is already in use, you can specify a different port:
+If port 5000 is already in use, you can specify a different port:
 ```bash
-dotnet run --urls="https://localhost:5002"
+dotnet run --urls="http://localhost:5002"
 ```
 
 **Entity Framework Issues:**
