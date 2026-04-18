@@ -16,15 +16,15 @@ public class TasksController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Task>> GetTasks()
+    public ActionResult<IEnumerable<TaskItem>> GetTasks()
     {
         return Ok(_context.Tasks.OrderBy(t => t.CreatedAt).ToList());
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Task> GetTask(int id)
+    public ActionResult<TaskItem> GetTask(int id)
     {
-        var task = _context.Tasks.Find(id);
+        var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
         if (task == null)
             return NotFound();
 
@@ -32,7 +32,7 @@ public class TasksController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Task> CreateTask(CreateTaskRequest request)
+    public ActionResult<TaskItem> CreateTask(CreateTaskRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Title))
             return BadRequest("Title is required.");
@@ -40,7 +40,7 @@ public class TasksController : ControllerBase
         if (request.Title.Length > 100)
             return BadRequest("Title must not exceed 100 characters.");
 
-        var task = new Task
+        var task = new TaskItem
         {
             Title = request.Title,
             Description = request.Description,
@@ -55,9 +55,9 @@ public class TasksController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public ActionResult<Task> UpdateTask(int id, UpdateTaskRequest request)
+    public ActionResult<TaskItem> UpdateTask(int id, UpdateTaskRequest request)
     {
-        var task = _context.Tasks.Find(id);
+        var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
         if (task == null)
             return NotFound();
 
@@ -83,7 +83,7 @@ public class TasksController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeleteTask(int id)
     {
-        var task = _context.Tasks.Find(id);
+        var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
         if (task == null)
             return NotFound();
 

@@ -1,7 +1,7 @@
 namespace TaskManagerAPI.Data;
 
-using Microsoft.EntityFrameworkCore;
 using TaskManagerAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class TaskDbContext : DbContext
 {
@@ -9,5 +9,5 @@ public class TaskDbContext : DbContext
     {
     }
 
-    public DbSet<Task> Tasks { get; set; }
+    public DbSet<TaskItem> Tasks { get; set; } = null!;
 }
